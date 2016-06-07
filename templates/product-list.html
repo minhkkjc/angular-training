@@ -5,3 +5,20 @@
         <p>{{product.price}}</p>
     </div>
 </div>
+<div class="product-form">
+    <div>Name</div>
+    <div>
+        <input type="text" ng-model="productListCtrl.product.name" />
+    </div>
+    <div>Description</div>
+    <div>
+        <textarea ng-model="productListCtrl.product.description"></textarea>
+    </div>
+    <div>Price</div>
+    <div>
+        <input type="text" ng-model="productListCtrl.product.price" />
+    </div>
+    <div>
+        <button ng-click="productListCtrl.addProduct(productListCtrl.product)">Submit</button>
+    </div>
+</div>

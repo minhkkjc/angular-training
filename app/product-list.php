@@ -13,7 +13,7 @@ if (isset($_POST['action'])) {
 
 	switch ($action) {
 		case 'getListProduct':
-			$stmt = $conn->prepare("SELECT * FROM product");
+			$stmt = $conn->prepare("SELECT * FROM products");
 			$stmt->execute();
 
 			$stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -21,5 +21,13 @@ if (isset($_POST['action'])) {
 
 			echo json_encode($result); die;
 			break;
+        case 'addProduct':
+            $name = $_POST['name'];
+            $description = $_POST['description'];
+            $price = $_POST['price'];
+
+            $sql = "INSERT INTO products (name, description, price) VALUES ('$name', '$description', '$price')";
+            $result = $conn->exec($sql);
+            echo $result; die;
 	}
 }
