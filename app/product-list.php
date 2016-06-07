@@ -6,4 +6,20 @@
  * Time: 10:44 AM
  */
 
-echo json_encode($_POST); die;
+require_once('db.php');
+
+if (isset($_POST['action'])) {
+	$action = $_POST['action'];
+
+	switch ($action) {
+		case 'getListProduct':
+			$stmt = $conn->prepare("SELECT * FROM product");
+			$stmt->execute();
+
+			$stmt->setFetchMode(PDO::FETCH_ASSOC);
+			$result = $stmt->fetchAll();
+
+			echo json_encode($result); die;
+			break;
+	}
+}

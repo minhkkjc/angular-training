@@ -3,14 +3,11 @@
  */
 (function() {
     angular.module('trainingAngular').config(function($routeProvider) {
-        $routeProvider.when('/notes', {
+        $routeProvider.when('/', {
             templateUrl: 'templates/product-list.html',
             controller: 'ProductListController',
             controllerAs: 'productListCtrl'
         })
-            .when('/', {
-                redirectTo: '/notes'
-            })
-            .otherwise({redirectTo: '/'});
+        .otherwise({redirectTo: '/'});
     });
 })();

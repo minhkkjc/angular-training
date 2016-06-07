@@ -3,13 +3,14 @@
  */
 (function() {
     angular.module('trainingAngular').controller('ProductListController', ['$http', function($http) {
+        var t = this;
+
         $http({
             method: 'POST',
             url: 'app/product-list.php',
-            data: "action=getListProduct",
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            data: "action=getListProduct"
         }).then(function(data) {
-            console.log(data);
+            t.products = data.data;
         });
     }]);
 })();
