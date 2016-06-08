@@ -1,8 +1,9 @@
 <div class="product-list">
-    <div ng-repeat="product in productListCtrl.products">
+    <div ng-repeat="(key, product) in productListCtrl.products">
         <h3>{{product.name}}</h3>
         <p>{{product.description}}</p>
         <p>{{product.price}}</p>
+        <a href="#" ng-click="productListCtrl.removeProduct(key, product.id)">Delete</a>
     </div>
 </div>
 <div class="product-form">

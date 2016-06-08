@@ -29,5 +29,11 @@ if (isset($_POST['action'])) {
             $sql = "INSERT INTO products (name, description, price) VALUES ('$name', '$description', '$price')";
             $result = $conn->exec($sql);
             echo $result; die;
+			break;
+		case 'removeProduct':
+			$id = $_POST['id'];
+			$sql = "DELETE FROM products WHERE id = $id";
+			$result = $conn->exec($sql);
+			echo $result; die;
 	}
 }

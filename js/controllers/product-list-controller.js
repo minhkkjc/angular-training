@@ -4,7 +4,7 @@
 (function() {
     angular.module('trainingAngular').controller('ProductListController', ['$http', function($http) {
         var t = this;
-        var product = {};
+        t.product = {};
 
         $http({
             method: 'POST',
@@ -23,6 +23,18 @@
                 if (data.data) {
                     t.products.push(product);
                     t.product = {};
+                }
+            });
+        };
+
+        t.removeProduct = function(key, id) {
+            $http({
+                method: 'POST',
+                url: 'app/product-list.php',
+                data: "action=removeProduct&id=" + id
+            }).then(function(data) {
+                if (data.data) {
+                    t.products.splice(key, 1);
                 }
             });
         }
